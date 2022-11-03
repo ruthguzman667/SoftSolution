@@ -1,0 +1,42 @@
+{
+    "item": [
+        {
+            "_id": "6360b0f3daf9c2b5fda1e9cb",
+            "producto": "Barbie Auto de playa",
+            "Pecio": 85000,
+            "imagen":"./images/productos/barbie_auto_de_playa.jpg",
+            "inventario": 55,
+            "_v": 0
+        },
+
+        {
+            "_id": "6360b1d6daf9c2b5fda1e9ce",
+            "producto": "Correpasillos Mix",
+            "Pecio": 155000,
+            "imagen":"./images/productos/correpasillos_mix.jpg",
+            "inventario": 95,
+            "_v": 0
+        },
+
+        {
+            "_id": "6360b272daf9c2b5fda1e9d1",
+            "producto": "Mini Scooter Electrica",
+            "Pecio": 980000,
+            "imagen":"./images/productos/mini_scooter_electrica.jpg",
+            "inventario": 39,
+            "_v": 0
+        },
+
+        {
+            "_id": "6360b2d5daf9c2b5fda1e9d4",
+            "producto": "Perrito Musical",
+            "Pecio": 450000,
+            "imagen":"./images/productos/musica_perrito.jpg",
+            "inventario": 190,
+            "_v": 0
+        }
+
+        
+
+    ]
+}
