@@ -9,4 +9,25 @@ module.exports = (err, req, res, next) =>{
         message: err.stack
     })
 
+    //Error de clave duplicada en mongoose
+    if(err.code===11000){
+        const message=`Clave duplicada ${object.keys(err.keyValue)}`
+        error= new ErrorHandler(message, 400)
+    }
+
+    //Error en JWT token
+    if(err.name==="JsonWebTokenError"){
+        const message= "Token de Json web es invalido, intente de nuevo!"
+        error= new ErrorHandler(message, 400)
+
+    }
+
+    //Error Token expirado
+    if(err.name==="TokenExpiredError"){
+        const message= "El token de JWT esta vencido, ya expiro. Intentalo de nuevo!"
+        error= new ErrorHandler(message, 400)
+    }
+
+
+
 }

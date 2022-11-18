@@ -1,22 +1,21 @@
 const mongoose=require("mongoose")
-
+ 
 const productosSchema=mongoose.Schema({
     nombre:{
-        //Caracteristicas que deso que tenga el campo nombre
-        type:String, 
-        required:[true, "Por favor registre el nombre del producto."],
+        type:String,
+        required:[true,"Por favor registra el nombre del producto."],
         trim:true,
-        maxLength:[120, "El nombre del producto no debe exceder los 120 caracteres "]
+        maxLength:[120,"El nombre del producto no debe exceder los 120 caracteres."]
     },
     precio:{
         type: Number,
-        required: [true, "Por favor ingrese el precio del producto."],
-        maxLength: [8, "El precio del producto no puede estar por encima de 99'999.99 "],
+        required:[true,"Por favor registre el precio del producto."],
+        maxLength:[8, "El precio del producto no puede estar por encima de 99'999.999"],
         default: 0.0
     },
     descripcion:{
-        type:String,
-        required:[true, "Por favor registe una descripcion para el producto."]
+      type:String,
+      required:[true,"Por favor registre una descripcion para el producto."]
     },
     calificacion:{
         type: Number,
@@ -36,7 +35,7 @@ const productosSchema=mongoose.Schema({
     ],
     categoria:{
         type:String,
-        required:[true, "Por favor seleccione la categoria del producto."],
+        required:[true,"Por favor seleccione la categoria del producto."],
         enum:{
             values:[
                 "Juegos de mesa",
@@ -47,18 +46,16 @@ const productosSchema=mongoose.Schema({
                 "Bloques y construccion",
                 "Figuras de accion y robots"
             ]
-
         }
     },
     vendedor:{
-        type: String,
-        required:[true, "Por favor registre el vendedor del producto."]
-    
+        type:String,
+        required:[true,"Por favor registre el vendedor de producto"]
     },
     inventario:{
         type: Number,
-        required:[true, "Por favor registre el stock del producto."],
-        maxLength:[5, "Cantidad maxima del producto no puede sobrepasar 99.999"],
+        required:[true, "Por favor registre el stock del producto"],
+        maxLength:[5,"Cantidad maxima del producto no puede sobrepasar 99999"],
         default:0
     },
     numCalificaciones:{
@@ -75,18 +72,23 @@ const productosSchema=mongoose.Schema({
                 type:Number,
                 required:true
             },
-            comentarios:{
+            comentario:{
                 type:String,
                 required:true
             }
         }
     ],
+    user:{
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true
+    },
+ 
     fechaCreacion:{
         type:Date,
         default:Date.now
     }
-
-    
+ 
 })
-
-module.exports=mongoose.model("productos", productosSchema)
+ 
+module.exports=mongoose.model("productos",productosSchema)

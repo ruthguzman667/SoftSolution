@@ -8,10 +8,10 @@ import AlertTemplate from 'react-alert-template-basic';
 
 const options = {
   timeout: 3000,
-  positions: positions.BOTTOM_CENTER,
-  transitions: transitions.SCALE
+  position: positions.BOTTOM_CENTER,
+  transition: transitions.SCALE
 }
-
+ 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
