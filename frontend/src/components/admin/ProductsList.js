@@ -3,22 +3,24 @@ import { MDBDataTable } from 'mdbreact'
 import MetaData from '../layout/MetaData';
 import Sidebar from './Sidebar'
 import { useAlert } from 'react-alert'
-import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../../actions/productActions'
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../actions/productActions"
 import { Link } from "react-router-dom"
-
+ 
 export const ProductsList = () => {
-    const { loading, productos, error } = useSelector(state => state.products)
+    const dispatch = useDispatch();
+    const { loading, products, error } = useSelector(state => state.products)
     const alert = useAlert();
 
-    const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(getProducts)
+
         if (error) {
             return alert.error(error)
         }
 
-        dispatch(getProducts());
-    }, [dispatch])
+        
+    }, [dispatch, alert, error])
 
     const setProducts = () => {
         const data = {
@@ -45,23 +47,23 @@ export const ProductsList = () => {
                 },
                 {
                     label: 'Acciones',
-                    field: 'actions',
+                    field: 'acciones',
                 },
             ],
             rows: []
         }
         
-        productos.forEach(products => {
+        products.forEach(product => {
             data.rows.push({
-                nombre: products.nombre,
-                precio: `$${products.precio}`,
-                inventario: products.inventario,
-                vendedor: products.vendedor,
+                nombre: product.nombre,
+                precio: `$${product.precio}`,
+                inventario: product.inventario,
+                vendedor: product.vendedor,
                 actions: <Fragment>
-                    <Link to={`/producto/${products._id}`} className="btn btn-primary py-1 px-2">
+                    <Link to={`/producto/${product._id}`} className="btn btn-primary py-1 px-2">
                         <i className="fa fa-eye"></i>
                     </Link><Link to="/" className="btn btn-warning py-1 px-2">
-                        <i class="fa fa-pencil"></i>
+                        <i className="fa fa-pencil"></i>
                     </Link>
 
                     <Link to="/" className="btn btn-danger py-1 px-2">
@@ -72,7 +74,7 @@ export const ProductsList = () => {
                 </Fragment>
             })
         })
-
+        console.log(data)
         return data;
     }
 
