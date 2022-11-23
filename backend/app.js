@@ -9,7 +9,6 @@ const path = require("path")
 //Seteamos archivo de configuracion
 if(process.env.NODE_ENV !== "PRODUCTION") require("dotenv").config({path:'backend/config/config.env'})
 
-
 //Uso de constantes importadas
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
