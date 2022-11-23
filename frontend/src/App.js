@@ -20,11 +20,14 @@ import { UpdateProfile} from "./components/user/UpdateProfile"
 import { UpdatePassword } from './components/user/UpdatePassword';
 import { ForgotPassword } from "./components/user/ForgotPassword"
 import { NewPassword } from './components/user/NewPassword';
+import { useSelector } from 'react-redux';
  
 function App() {
   useEffect(()=>{
    store.dispatch(loadUser())
   },[])
+
+  const {user, isAuthenticated, loading} = useSelector(state => state.auth)
  
   return (
     <Router>
@@ -56,7 +59,10 @@ function App() {
            
           </Routes>
         </div>
-        <Footer />
+        
+        {!loading && (isAuthenticated || user.role !== "admin") && (
+            <Footer />
+        )}
     </div>
     </Router>
   );

@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 //conexion con la base de datos
 const connectDatabase = () => {
-    mongoose.connect(process.env.DB_ATLAS_URI, {
+    mongoose.connect(process.env.DB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(con => {
